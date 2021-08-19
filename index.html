@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Document</title>
+</head>
+<style>
+  #title-bar-btns {
+    -webkit-app-region: no-drag;
+    -webkit-app-region: no-drag;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    background: #0c0c0c;
+    width: 100%;
+    height: 24px;
+}
+#close{
+  width: 34px;
+    height: 26px;
+    background: #000;
+    color: #fff;
+    margin-top: -2px;
+}
+</style>
+<body>
+    <div id="root">
+    </div>
+         
+    <div id="title-bar">
+      <div id="title-bar-btns">
+           <button class="float-right" id="close" onclick="window.top.close(); return false">x</button>
+      </div>
+    </div>
+    <!-- <p id="version"></p> -->
+    <script src="./build/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- <script src="renderer.js"></script> -->
+    <script>
+    
+      document.addEventListener("keyup", function (e) {
+            var keyCode = e.keyCode ? e.keyCode : e.which;
+            if (keyCode == 44) {
+              stopPrntScr();
+            }
+          });
+          function stopPrntScr() {
+            var inpFld = document.createElement("input");
+            inpFld.setAttribute("value", ".");
+            inpFld.setAttribute("width", "0");
+            inpFld.style.height = "0px";
+            inpFld.style.width = "0px";
+            inpFld.style.border = "0px";
+            document.body.appendChild(inpFld);
+            inpFld.select();
+            document.execCommand("copy");
+            inpFld.remove(inpFld);
+          }
+          function AccessClipboardData() {
+            try {
+              window.clipboardData.setData("text", "Access   Restricted");
+            } catch (err) {}
+          }
+          setInterval("AccessClipboardData()", 300);
+
+    </script>
+
+  <!-- <script>
+  const videoBoxWidth = $('#video-box').width()
+const videoBoxHeight = videoBoxWidth * 0.5625
+
+const player = videojs("myVideo",
+  {
+    // video.js options
+    controls: true,
+    loop: false,
+    width: videoBoxWidth,
+    height: videoBoxHeight,
+    plugins: {
+    // videojs-record plugin options
+      record: {
+        image: false,
+        audio: false,
+        video: true,
+        maxLength: 5,
+        debug: true
+      }
+    }
+  }
+);
+
+player.on('stopRecord', () => {
+  console.log('finished recording: ', player.recordedData);
+});
+  </script> -->
+
+</body>
+</html>
