@@ -12,7 +12,7 @@ function CreateWindow(){
         // kiosk: true,
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false,
+            // contextIsolation: false,
         }
      
         // fullscreen: true
