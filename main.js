@@ -1,7 +1,7 @@
 const {app, BrowserWindow, ipcMain} =require('electron');
 const electron = require('electron');
 const {autoUpdater} = require('electron-updater');
-
+let win;
 function CreateWindow(){
     const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
     const win= new BrowserWindow({
@@ -19,6 +19,9 @@ function CreateWindow(){
     })
     win.loadFile('index.html');
     // win.webContents.openDevTools();
+    win.webContents.on('did-finish-load', () => {
+      win.webContents.send('version', app.getVersion())
+    })
 }
 
 // app.whenReady().then(
@@ -29,10 +32,6 @@ app.on('ready', () => {
   CreateWindow()
 
   autoUpdater.checkForUpdatesAndNotify()
-
-  win.webContents.on('did-finish-load', () => {
-    win.webContents.send('version', app.getVersion())
-  })
 
 })
 app.on('window-all-closed', () => {

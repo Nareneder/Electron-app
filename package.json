@@ -1,6 +1,6 @@
 {
   "name": "demo-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nareneder/Electron-app.git"
+    "url": "git+git@github.com:Nareneder/Electron-app.git"
   },
   "keywords": [],
   "author": "Narender",
