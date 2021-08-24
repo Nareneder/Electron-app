@@ -20,7 +20,7 @@ function CreateWindow(){
         // kiosk: true,
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false,
+            // contextIsolation: false,
         }
      
         // fullscreen: true
@@ -106,9 +106,9 @@ app.on('ready', () => {
   //   autoUpdater.quitAndInstall();
   // });
 
-  // ipcMain.on('app_version', (event) => {
-  //   event.sender.send('app_version', { version: app.getVersion() });
-  // });
+  ipcMain.on('app_version', (event) => {
+    event.sender.send('app_version', { version: app.getVersion() });
+  });
 
 
   const sendStatusToWindow = (text) => {
