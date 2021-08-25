@@ -1,6 +1,6 @@
 {
   "name": "demo-app",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -12,20 +12,25 @@
     "dist:linux": "electron-builder --linux",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "deploy": "electron-builder build --win --publish always"
   },
   "build": {
     "appId": "com.desk.app",
     "productName": "Electron App",
     "target": "Nsis",
+    "icon":"./app_icon/logo.ico",
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "installerIcon": "./app_icon/logo.ico"
     },
-    "publish": [
-      "github"
-    ]
+    "publish": {
+      "provider": "github",
+      "owner": "Nareneder",
+      "repo": "Electron-app",
+      "token": "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"
+    }
   },
   "repository": {
     "type": "git",
@@ -75,6 +80,7 @@
     "os-utils": "^0.0.14",
     "puppeteer": "^10.2.0",
     "react-router-dom": "^5.2.0",
+    "rollup": "^2.56.3",
     "sweetalert2": "^11.1.2",
     "symlinks": "^1.0.0",
     "update-electron-app": "^2.0.1"
